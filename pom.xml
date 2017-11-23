@@ -8,6 +8,12 @@
 	<artifactId>garlic-bolt-api</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.8.RELEASE</version>
+	</parent>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.netflix.feign</groupId>
@@ -20,6 +26,6 @@
 			<artifactId>feign-jackson</artifactId>
 			<version>8.18.0</version>
 		</dependency>
-	</dependencies>
 
+	</dependencies>
 </project>

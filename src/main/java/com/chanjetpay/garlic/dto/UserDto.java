@@ -1,7 +1,5 @@
 package com.chanjetpay.garlic.dto;
 
-import com.sun.jndi.toolkit.url.Uri;
-
 import java.io.Serializable;
 
 /**

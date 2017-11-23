@@ -10,7 +10,9 @@ import feign.RequestLine;
 /**
  * Created by libaoa on 2017/11/13.
  */
+
 public interface BlockService {
+
 	@RequestLine("GET /block/list-user?scope={scope}")
 	List<UserDto> queryUsers(@Param(value = "scope") String scope);
 
