@@ -1,4 +1,6 @@
-package com.chanjetpay.garlic.result;
+package com.chanjetpay.result;
+
+import com.chanjetpay.result.Result;
 
 import java.util.List;
 

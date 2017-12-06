@@ -1,4 +1,4 @@
-package com.chanjetpay.garlic.result;
+package com.chanjetpay.result;
 
 import java.io.Serializable;
 

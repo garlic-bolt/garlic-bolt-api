@@ -1,4 +1,4 @@
-package com.chanjetpay.garlic.result;
+package com.chanjetpay.result;
 
 /***
  * 有单个返回值结果

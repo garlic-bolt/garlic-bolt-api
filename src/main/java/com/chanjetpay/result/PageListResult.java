@@ -1,6 +1,5 @@
 package com.chanjetpay.result;
 
-import com.chanjetpay.garlic.result.ListResult;
 import com.chanjetpay.paging.Pagination;
 
 /**
