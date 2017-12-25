@@ -1,5 +1,8 @@
 package com.chanjetpay.result;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 public abstract class Result implements Serializable {
@@ -60,4 +63,9 @@ public abstract class Result implements Serializable {
 	}
 	
 	public abstract boolean isError();
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE, true, true);
+	}
 }

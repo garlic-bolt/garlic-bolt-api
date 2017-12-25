@@ -1,6 +1,8 @@
 package com.chanjetpay.result;
 
 import com.chanjetpay.result.Result;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.List;
 
@@ -39,5 +41,10 @@ public class ListResult<T> extends Result {
 	@Override
 	public boolean isError() {
 		return !Result.SUCCESS.equals(this.getCode());
+	}
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE, true, true);
 	}
 }

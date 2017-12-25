@@ -1,6 +1,8 @@
 package com.chanjetpay.result;
 
 import com.chanjetpay.paging.Pagination;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * 返回集合值分页结果
@@ -28,5 +30,10 @@ public class PageListResult<T> extends ListResult<T> {
 	public PageListResult<T> setPagination(Pagination pagination) {
 		this.pagination = pagination;
 		return this;
+	}
+
+	@Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE, true, true);
 	}
 }
