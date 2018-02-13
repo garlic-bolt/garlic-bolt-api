@@ -5,7 +5,9 @@ import com.chanjetpay.garlic.enums.AccountAuthTypeEnum;
 import com.chanjetpay.result.BasicResult;
 import com.chanjetpay.result.GenericResult;
 import com.chanjetpay.result.ListResult;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import feign.Headers;
+import feign.Param;
+import feign.RequestLine;
 
 /**
  * 外部账户服务
@@ -17,75 +19,97 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
  * 主账户（1）-（n）第三方平台
  * 第三方平台（1）-（n）子账户
  */
+@Headers({"Content-Type: application/json","Accept: application/json"})
 public interface AccountService {
 
 	////账户管理
 
 	//会员开户
+	@RequestLine("POST /account/member/open")
 	GenericResult<AccountDto> createMemberAccount(MemberDto member, AccountDto account);
 
 	//商户开户
+	@RequestLine("POST /account/merchant/open")
 	GenericResult<AccountDto> createMerchantAccount(MerchantDto merchant, AccountDto account);
 
 	//开子账户
-	GenericResult<AccountDto> openSubAccount(String accountCode, AccountDto account);
+	@RequestLine("POST /account/merchant/{accountCode}/open")
+	GenericResult<AccountDto> openSubAccount(@Param("accountCode") String accountCode, AccountDto account);
 
 	//挂起外部账户
-	BasicResult suspendAccount(String accountCode);
+	@RequestLine("POST /account/{accountCode}/suspend")
+	BasicResult suspendAccount(@Param("accountCode") String accountCode);
 
 	//恢复外部账户
-	BasicResult resumeAccount(String accountCode);
+	@RequestLine("POST /account/{accountCode}/resume")
+	BasicResult resumeAccount(@Param("accountCode") String accountCode);
 
 	//注销账户
-	BasicResult closeAccount(String accountCode);
+	@RequestLine("POST /account/{accountCode}/close")
+	BasicResult closeAccount(@Param("accountCode") String accountCode);
 
 	//冻结
-	BasicResult frozenAccount(String accountCode);
+	@RequestLine("POST /account/{accountCode}/frozen")
+	BasicResult frozenAccount(@Param("accountCode") String accountCode);
 
 	//解冻
-	BasicResult thawAccount(String accountCode);
+	@RequestLine("POST /account/{accountCode}/thaw")
+	BasicResult thawAccount(@Param("accountCode") String accountCode);
 
 	//冻结余额
-	BasicResult freeze(String accountNo, Long amount);
+	@RequestLine("POST /account/{accountCode}/freeze")
+	BasicResult freeze(@Param("accountCode") String accountNo, Long amount);
 
 	//解冻余额
+	@RequestLine("POST /account/{accountCode}/unfreeze")
 	BasicResult unfreezeCapital(String accountNo, Long amount);
 
 	////账户查询
 
 	//根据户口号查询账户详细
-	ListResult<AccountDto> queryByAccountCode(String accountCode);
+	@RequestLine("GET /account/list?accountCode={accountCode}")
+	ListResult<AccountDto> queryByAccountCode(@Param("accountCode") String accountCode);
 
 	//根据账户号查询账户详细
-	GenericResult<AccountDto> queryByAccountNo(String accountNo);
+	@RequestLine("GET /account/query?accountNo={accountNo}")
+	GenericResult<AccountDto> queryByAccountNo(@Param("accountNo") String accountNo);
 
 	//根据第三方平台的用户标识查询子账户详细
-	GenericResult<AccountDto> queryByOwner(String group, String owner);
+	@RequestLine("GET /account/query?group={group}&owner={owner}")
+	GenericResult<AccountDto> queryByOwner(@Param("group") String group, @Param("owner") String owner);
 
 	//查询账户操作历史
+	@RequestLine("GET /account/manager/list?accountCode={accountCode}")
 	ListResult<AccountManageDto> queryManagerHistory(String accountCode);
 
 	//根据账户号查询帐户名明细
-	ListResult<AccountDetailDto> queryAccountDetail(String accountNo);
+	@RequestLine("GET /account/detail/list?accountNo={accountNo}")
+	ListResult<AccountDetailDto> queryAccountDetail(@Param("accountNo") String accountNo);
 
 	////账户安全
 
 	//设置账户密码
-	BasicResult resetPassword(String accountNo);
+	@RequestLine("POST /account/{accountNo}/password/reset")
+	BasicResult resetPassword(@Param("accountNo") String accountNo, String newPassword);
 
 	//验证账户密码
-	GenericResult<Boolean> verifyPassword(String accountNo);
+	@RequestLine("POST /account/{accountNo}/password/verify")
+	GenericResult<Boolean> verifyPassword(@Param("accountNo") String accountNo, String password);
 
 	//校验余额是否被篡改
-	GenericResult<Boolean> validateBalance(String accountNo);
+	@RequestLine("POST /account/{accountNo}/balance/validate")
+	GenericResult<Boolean> validateBalance(@Param("accountNo") String accountNo);
 
 	//账户授权-被授权账户，授权人户口号
-	BasicResult authorizeAgreement(String awardAccountNo, String targetAccountCode, AccountAuthTypeEnum authType);
+	@RequestLine("POST /account/{accountNo}/authorize")
+	BasicResult authorizeAgreement(@Param("accountNo") String awardAccountNo, String targetAccountCode, AccountAuthTypeEnum authType);
 
 	//取消授权
-	BasicResult revokeAgreement(String awardAccountNo, String targetAccountCode, AccountAuthTypeEnum authType);
+	@RequestLine("POST /account/{accountNo}/revoke")
+	BasicResult revokeAgreement(@Param("accountNo") String awardAccountNo, String targetAccountCode, AccountAuthTypeEnum authType);
 
 	//验证授权
-	GenericResult<Boolean> validateAgreement(String awardAccountNo, String targetAccountCode, AccountAuthTypeEnum authType);
+	@RequestLine("POST /account/{accountNo}/verify")
+	GenericResult<Boolean> verifyAgreement(@Param("accountNo") String awardAccountNo, String targetAccountCode, AccountAuthTypeEnum authType);
 
 }

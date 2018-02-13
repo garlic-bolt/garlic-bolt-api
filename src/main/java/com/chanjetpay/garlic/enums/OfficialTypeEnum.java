@@ -1,9 +1,9 @@
 package com.chanjetpay.garlic.enums;
 
 public enum OfficialTypeEnum {
-	SUBSCRIBE("test"),
-	SERVICE("test1"),
-	ENTERPRISE("test2");
+	SUBSCRIBE("订阅号"),
+	SERVICE("服务号"),
+	ENTERPRISE("企业号");
 
 	private String desc;
 	OfficialTypeEnum(String desc){

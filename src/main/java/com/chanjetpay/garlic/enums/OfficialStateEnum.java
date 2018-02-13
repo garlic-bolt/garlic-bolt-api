@@ -1,5 +1,15 @@
 package com.chanjetpay.garlic.enums;
 
+/**
+ * 公众号及用户状态
+ */
 public enum OfficialStateEnum {
-	RUNNING, CLOSED;
+	/**
+	 * 启用
+	 */
+	ENABLED,
+	/**
+	 * 停用
+	 */
+	DISABLED;
 }

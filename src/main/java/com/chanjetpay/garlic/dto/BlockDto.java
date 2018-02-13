@@ -31,6 +31,8 @@ public class BlockDto implements Serializable{
 	private String city;
 	//区
 	private String district;
+	//地址
+	private String address;
 	//精度
 	private Long longitude;
 	//纬度
@@ -126,6 +128,14 @@ public class BlockDto implements Serializable{
 		this.district = district;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public String getMemo() {
 		return memo;
 	}
@@ -195,10 +205,11 @@ public class BlockDto implements Serializable{
 				", province='" + province + '\'' +
 				", city='" + city + '\'' +
 				", district='" + district + '\'' +
+				", address='" + address + '\'' +
 				", longitude=" + longitude +
 				", latitude=" + latitude +
 				", memo='" + memo + '\'' +
-				", state='" + state + '\'' +
+				", state=" + state +
 				", photos=" + photos +
 				", master='" + master + '\'' +
 				", admins=" + admins +

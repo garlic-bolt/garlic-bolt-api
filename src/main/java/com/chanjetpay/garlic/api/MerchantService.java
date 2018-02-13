@@ -8,6 +8,8 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
+import java.awt.*;
+
 @Headers({"Content-Type: application/json","Accept: application/json"})
 public interface MerchantService {
 
@@ -23,9 +25,10 @@ public interface MerchantService {
 	@RequestLine("POST /merchant/add")
 	GenericResult<MerchantDto> createMerchant(MerchantDto merchant);
 
-	@RequestLine("POST /merchant/wx/{id}/add")
-	BasicResult addWxOfficial(@Param("merchantid") String merchantId, WxOfficialDto wxOfficial);
+	@RequestLine("POST /merchant/wx/{merchantId}/add")
+	BasicResult addWxOfficial(@Param("merchantId") String merchantId, WxOfficialDto wxOfficial);
 
-	@RequestLine("POST /merchant/alipay/{id}/add")
-	BasicResult addAlipayPlatform(@Param("id") String merchantId, AlipayPlatformDto alipayPlatform);
+	@RequestLine("POST /merchant/alipay/{merchantId}/add")
+	BasicResult addAlipayPlatform(@Param("merchantId") String merchantId, AlipayPlatformDto alipayPlatform);
+
 }

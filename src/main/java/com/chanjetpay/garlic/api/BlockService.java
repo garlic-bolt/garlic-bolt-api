@@ -34,10 +34,10 @@ public interface BlockService {
 
 	/**
 	 * 完善并激活社区信息
-	 * @param block
 	 * @param inviteCode
+	 * @param block
 	 * @return
 	 */
 	@RequestLine("POST /block/complete/{invite}")
-	GenericResult<BlockDto> complete(BlockDto block, @Param("invite") String inviteCode);
+	GenericResult<BlockDto> complete(@Param("invite") String inviteCode,BlockDto block);
 }

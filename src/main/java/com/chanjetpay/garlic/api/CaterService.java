@@ -1,12 +1,14 @@
 package com.chanjetpay.garlic.api;
 
 import com.chanjetpay.garlic.dto.DishDto;
+import feign.Headers;
 
 import java.util.List;
 
 /**
  * 餐饮服务
  */
+@Headers({"Content-Type: application/json","Accept: application/json"})
 public interface CaterService {
 
 	/**
@@ -29,8 +31,6 @@ public interface CaterService {
 	 * @return 菜品编号
 	 */
 	String submitDish(String merchantCode, DishDto dish);
-
-
 
 
 	/**
