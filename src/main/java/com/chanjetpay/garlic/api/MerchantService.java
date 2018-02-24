@@ -22,8 +22,8 @@ public interface MerchantService {
 	//@RequestLine("POST /account/{id}")
 	//GenericResult<AccountDto> getAccountInfo(@Param("id") String id);
 
-	@RequestLine("POST /merchant/add")
-	GenericResult<MerchantDto> createMerchant(MerchantDto merchant);
+	@RequestLine("POST /merchant/{blockCode}/create")
+	GenericResult<MerchantDto> create(@Param("blockCode") String blockCode, MerchantDto merchant);
 
 	@RequestLine("POST /merchant/wx/{merchantId}/add")
 	BasicResult addWxOfficial(@Param("merchantId") String merchantId, WxOfficialDto wxOfficial);

@@ -20,4 +20,8 @@ public interface MemberService {
 	//获取用户的电话号
 	@RequestLine("POST /member/wx/{blockCode}/user-phone-no")
 	GenericResult<String> getUserPhoneNo(@Param("blockCode") String blockCode, @Param("openId") String openId);
+
+
+
+
 }
