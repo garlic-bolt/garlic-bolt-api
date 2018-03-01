@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuthorityDto implements Serializable{
+public class AuthorityDto implements Serializable {
 	private static final long serialVersionUID = -6762995596109534381L;
 
 	private java.lang.String authCode;
@@ -20,7 +20,7 @@ public class AuthorityDto implements Serializable{
 	private java.lang.String anot;
 	private AuthorityTypeEnum type;
 
-	private List<AuthorityDto> subAuthorityList;
+	private List<AuthorityDto> subAuthorityList = new ArrayList<>();
 
 	public List<AuthorityDto> getSubAuthorityList() {
 		return subAuthorityList;

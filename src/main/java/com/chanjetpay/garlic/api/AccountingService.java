@@ -14,9 +14,6 @@ import feign.RequestLine;
 @Headers("Accept: application/json")
 public interface AccountingService {
 
-
-
-
 	/**
 	 * 单笔记账
 	 * @param voucher 会计凭证
@@ -36,13 +33,22 @@ public interface AccountingService {
 	GenericResult<String> batchAccounting(SourceRequestDto sourceRequest);
 
 	/**
-	 * 账务冲正
+	 * 账务冲正-蓝冲（借贷互换）
 	 * @param accountingNo 记账流水号
 	 * @return
 	 */
 	@Headers("Content-Type: application/json")
 	@RequestLine("POST /accounting/{accountingNo}/reverse")
 	GenericResult<String> reverseAccounting(String accountingNo);
+
+	/**
+	 * 账务冲正-红冲（发生额为负）
+	 * @param accountingNo 记账流水号
+	 * @return
+	 */
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /accounting/{accountingNo}/anti")
+	GenericResult<String> antiAccounting(String accountingNo);
 
 	/**
 	 * 会计凭证查询

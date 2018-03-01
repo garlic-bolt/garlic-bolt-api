@@ -1,5 +1,12 @@
 package com.chanjetpay.garlic.enums;
 
 public enum UserSexEnum {
-	MALE, FEMALE;
+	/**
+	 * 男
+	 */
+	MALE,
+	/**
+	 * 女
+	 */
+	FEMALE;
 }

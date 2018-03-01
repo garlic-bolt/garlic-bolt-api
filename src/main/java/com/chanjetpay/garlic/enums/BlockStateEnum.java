@@ -8,10 +8,6 @@ public enum BlockStateEnum {
 	 */
 	ENROLL,
 	/**
-	 * 信息已完善
-	 */
-	COMPLETE,
-	/**
 	 * 已激活
 	 */
 	ACTIVE,

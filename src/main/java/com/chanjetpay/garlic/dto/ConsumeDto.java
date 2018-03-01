@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class ConsumeDto implements Serializable {
 	private static final long serialVersionUID = -3249998377387514055L;
 
+	private String merchantId;
 	private String memberId;
 	private Long amount;
 	private String memo;

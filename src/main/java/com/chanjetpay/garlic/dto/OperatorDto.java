@@ -39,8 +39,11 @@ public class OperatorDto implements Serializable {
 	private Integer messageCount;
 	private Integer taskCount;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
+	public void fillOperatorInfo(String name, String mobile, String email, String password){
+		this.name = name;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
 	}
 
 	public String getOperatorId() {

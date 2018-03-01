@@ -1,5 +1,7 @@
 package com.chanjetpay.garlic.dto;
 
+import com.chanjetpay.garlic.enums.MerchantStateEnum;
+import com.chanjetpay.garlic.enums.MerchantTypeEnum;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -12,44 +14,20 @@ import java.util.Date;
  */
 public class MerchantDto implements Serializable{
 
+	private java.lang.String merchantId;
+	private java.lang.String merchantName;
+	private java.lang.String blockCode;
+	private java.lang.String shortName;
+	private MerchantTypeEnum merchantType;
+	private java.lang.String contact;
+	private java.lang.String telphone;
+	private java.lang.String mobile;
+	private java.lang.String address;
+	private java.lang.String industry;
+	private java.lang.String domain;
+	private MerchantStateEnum state;
+
 	//商户编号 商户名称  商户简称 商户行业类别 商户归属省  商户归属市  商户状态  起止日期
-
-	//商户种类--企业，个体，事业单位，国家机关，其他
-	private String merchantCategory;
-
-	//商户类型--普通，代理，集团，机构，加盟，连锁
-	private String merchantType;
-
-	//上级商户号
-	private String parentMerCode;
-
-	//经营行业
-	private String bizType;
-	//业务子类
-	private String busiTypeId;
-	//经营子行业
-	private String subCategory;
-	//商户编号
-	private String merchantCode;
-	//商户名称
-	private String merchantName;
-
-	//商户简称
-	String shortName;
-	//拼音名
-	String pyName;
-	//省
-	String province;
-	//市
-	String city;
-	//状态
-	String state;
-	//开始生效日期
-	Date startDate;
-	//结束生效日期
-	Date endDate;
-	//注册日期
-	Date regDate;
 
 	//法人姓名
 	private String legalName;
@@ -57,74 +35,38 @@ public class MerchantDto implements Serializable{
 	private String identityCard;
 	//注册登记号
 	private String registrationNo;
-
-	//管理员
-	String adminName;
-	//管理员手机号
-	String adminMobile;
-
 	//身份证复印件
 	private String idUrl;
 	//身份证反面复印件
 	private String idBackUrl;
-
 	//营业执照复印件
 	private String licenseUrl;
 
-	public String getMerchantCategory() {
-		return merchantCategory;
+	//管理员
+	String adminName;
+	//管理员密码
+	String adminPassword;
+	//管理员手机号
+	String adminMobile;
+
+	public void fillMerchantInfo(String merchantName, String shortName, String address){
+		this.merchantName = merchantName;
+		this.shortName = shortName;
+		this.address = address;
 	}
 
-	public void setMerchantCategory(String merchantCategory) {
-		this.merchantCategory = merchantCategory;
+	public void fillAdminInfo(String adminName, String adminPassword, String adminMobile){
+		this.adminName = adminName;
+		this.adminPassword = adminPassword;
+		this.adminMobile = adminMobile;
 	}
 
-	public String getMerchantType() {
-		return merchantType;
+	public String getMerchantId() {
+		return merchantId;
 	}
 
-	public void setMerchantType(String merchantType) {
-		this.merchantType = merchantType;
-	}
-
-	public String getParentMerCode() {
-		return parentMerCode;
-	}
-
-	public void setParentMerCode(String parentMerCode) {
-		this.parentMerCode = parentMerCode;
-	}
-
-	public String getBizType() {
-		return bizType;
-	}
-
-	public void setBizType(String bizType) {
-		this.bizType = bizType;
-	}
-
-	public String getBusiTypeId() {
-		return busiTypeId;
-	}
-
-	public void setBusiTypeId(String busiTypeId) {
-		this.busiTypeId = busiTypeId;
-	}
-
-	public String getSubCategory() {
-		return subCategory;
-	}
-
-	public void setSubCategory(String subCategory) {
-		this.subCategory = subCategory;
-	}
-
-	public String getMerchantCode() {
-		return merchantCode;
-	}
-
-	public void setMerchantCode(String merchantCode) {
-		this.merchantCode = merchantCode;
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
 	}
 
 	public String getMerchantName() {
@@ -135,6 +77,14 @@ public class MerchantDto implements Serializable{
 		this.merchantName = merchantName;
 	}
 
+	public String getBlockCode() {
+		return blockCode;
+	}
+
+	public void setBlockCode(String blockCode) {
+		this.blockCode = blockCode;
+	}
+
 	public String getShortName() {
 		return shortName;
 	}
@@ -143,60 +93,68 @@ public class MerchantDto implements Serializable{
 		this.shortName = shortName;
 	}
 
-	public String getPyName() {
-		return pyName;
+	public MerchantTypeEnum getMerchantType() {
+		return merchantType;
 	}
 
-	public void setPyName(String pyName) {
-		this.pyName = pyName;
+	public void setMerchantType(MerchantTypeEnum merchantType) {
+		this.merchantType = merchantType;
 	}
 
-	public String getProvince() {
-		return province;
+	public String getContact() {
+		return contact;
 	}
 
-	public void setProvince(String province) {
-		this.province = province;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
-	public String getCity() {
-		return city;
+	public String getTelphone() {
+		return telphone;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setTelphone(String telphone) {
+		this.telphone = telphone;
 	}
 
-	public String getState() {
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
+	public MerchantStateEnum getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(MerchantStateEnum state) {
 		this.state = state;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	public Date getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
 	}
 
 	public String getLegalName() {
@@ -223,22 +181,6 @@ public class MerchantDto implements Serializable{
 		this.registrationNo = registrationNo;
 	}
 
-	public String getAdminName() {
-		return adminName;
-	}
-
-	public void setAdminName(String adminName) {
-		this.adminName = adminName;
-	}
-
-	public String getAdminMobile() {
-		return adminMobile;
-	}
-
-	public void setAdminMobile(String adminMobile) {
-		this.adminMobile = adminMobile;
-	}
-
 	public String getIdUrl() {
 		return idUrl;
 	}
@@ -263,8 +205,27 @@ public class MerchantDto implements Serializable{
 		this.licenseUrl = licenseUrl;
 	}
 
-	@Override
-	public String toString() {
-		return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE, true, true);
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+
+	public String getAdminPassword() {
+		return adminPassword;
+	}
+
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
+	}
+
+	public String getAdminMobile() {
+		return adminMobile;
+	}
+
+	public void setAdminMobile(String adminMobile) {
+		this.adminMobile = adminMobile;
 	}
 }

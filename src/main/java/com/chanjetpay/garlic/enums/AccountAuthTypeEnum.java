@@ -1,5 +1,16 @@
 package com.chanjetpay.garlic.enums;
 
 public enum AccountAuthTypeEnum {
-	QUERY,TRANSFER,WHOLE;
+	/**
+	 * 查询
+	 */
+	QUERY,
+	/**
+	 * 转账
+	 */
+	TRANSFER,
+	/**
+	 * 全部
+	 */
+	WHOLE;
 }

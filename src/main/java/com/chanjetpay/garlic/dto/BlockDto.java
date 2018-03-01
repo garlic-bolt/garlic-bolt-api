@@ -11,49 +11,44 @@ import java.util.List;
 public class BlockDto implements Serializable{
 	private static final long serialVersionUID = -3605719014997445916L;
 
-	//社区id
-	private String blockId;
-	//社区名称
-	private String blockName;
-	//社区长邮箱
-	private String wardenEmail;
-	//社区长电话
-	private String wardenPhone;
-	//社区长姓名
-	private String wardenName;
-	//社区长身份证号
-	private String wardenIdNo;
-	//邀请码
-	private String inviteCode;
-	//省
-	private String province;
-	//市
-	private String city;
-	//区
-	private String district;
-	//地址
-	private String address;
-	//精度
-	private Long longitude;
-	//纬度
-	private Long latitude ;
-	//备注
-	private String memo;
-	//状态
+	private java.lang.String blockCode;
+	private java.lang.String blockName;
+	private java.lang.String province;
+	private java.lang.String city;
+	private java.lang.String district;
+	private java.lang.Long latitude;
+	private java.lang.Long longitude;
+	private java.lang.String wardenEmail;
+	private java.lang.String wardenPhone;
+	private java.lang.String password;
+	private java.lang.String wardenName;
+	private java.lang.String wardenIdNo;
+	private java.lang.String inviteCode;
+	private java.lang.String memo;
 	private BlockStateEnum state;
-	//图片
-	private List<PhotoDto> photos;
-	//系统管理员
-	private String master;
-	//业务管理员
-	private List<AdminDto> admins;
 
-	public String getBlockId() {
-		return blockId;
+
+	public BlockDto(){
+
 	}
 
-	public void setBlockId(String blockId) {
-		this.blockId = blockId;
+	public void fillBlockData(String name, String password, String province, String city, String district){
+		this.setWardenName(name);
+		this.setPassword(password);
+		this.setProvince(province);
+		this.setCity(city);
+		this.setDistrict(district);
+	}
+
+	//系统管理员
+	private OperatorDto master;
+
+	public String getBlockCode() {
+		return blockCode;
+	}
+
+	public void setBlockCode(String blockCode) {
+		this.blockCode = blockCode;
 	}
 
 	public String getBlockName() {
@@ -62,46 +57,6 @@ public class BlockDto implements Serializable{
 
 	public void setBlockName(String blockName) {
 		this.blockName = blockName;
-	}
-
-	public String getWardenEmail() {
-		return wardenEmail;
-	}
-
-	public void setWardenEmail(String wardenEmail) {
-		this.wardenEmail = wardenEmail;
-	}
-
-	public String getWardenPhone() {
-		return wardenPhone;
-	}
-
-	public void setWardenPhone(String wardenPhone) {
-		this.wardenPhone = wardenPhone;
-	}
-
-	public String getWardenName() {
-		return wardenName;
-	}
-
-	public void setWardenName(String wardenName) {
-		this.wardenName = wardenName;
-	}
-
-	public String getWardenIdNo() {
-		return wardenIdNo;
-	}
-
-	public void setWardenIdNo(String wardenIdNo) {
-		this.wardenIdNo = wardenIdNo;
-	}
-
-	public String getInviteCode() {
-		return inviteCode;
-	}
-
-	public void setInviteCode(String inviteCode) {
-		this.inviteCode = inviteCode;
 	}
 
 	public String getProvince() {
@@ -128,12 +83,68 @@ public class BlockDto implements Serializable{
 		this.district = district;
 	}
 
-	public String getAddress() {
-		return address;
+	public Long getLatitude() {
+		return latitude;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLatitude(Long latitude) {
+		this.latitude = latitude;
+	}
+
+	public Long getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Long longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getWardenEmail() {
+		return wardenEmail;
+	}
+
+	public void setWardenEmail(String wardenEmail) {
+		this.wardenEmail = wardenEmail;
+	}
+
+	public String getWardenPhone() {
+		return wardenPhone;
+	}
+
+	public void setWardenPhone(String wardenPhone) {
+		this.wardenPhone = wardenPhone;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getWardenName() {
+		return wardenName;
+	}
+
+	public void setWardenName(String wardenName) {
+		this.wardenName = wardenName;
+	}
+
+	public String getWardenIdNo() {
+		return wardenIdNo;
+	}
+
+	public void setWardenIdNo(String wardenIdNo) {
+		this.wardenIdNo = wardenIdNo;
+	}
+
+	public String getInviteCode() {
+		return inviteCode;
+	}
+
+	public void setInviteCode(String inviteCode) {
+		this.inviteCode = inviteCode;
 	}
 
 	public String getMemo() {
@@ -152,67 +163,25 @@ public class BlockDto implements Serializable{
 		this.state = state;
 	}
 
-	public Long getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(Long longitude) {
-		this.longitude = longitude;
-	}
-
-	public Long getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(Long latitude) {
-		this.latitude = latitude;
-	}
-
-	public List<PhotoDto> getPhotos() {
-		return photos;
-	}
-
-	public void setPhotos(List<PhotoDto> photos) {
-		this.photos = photos;
-	}
-
-	public String getMaster() {
-		return master;
-	}
-
-	public void setMaster(String master) {
-		this.master = master;
-	}
-
-	public List<AdminDto> getAdmins() {
-		return admins;
-	}
-
-	public void setAdmins(List<AdminDto> admins) {
-		this.admins = admins;
-	}
-
 	@Override
 	public String toString() {
 		return "BlockDto{" +
-				"blockId='" + blockId + '\'' +
+				"blockCode='" + blockCode + '\'' +
 				", blockName='" + blockName + '\'' +
-				", wardenEmail='" + wardenEmail + '\'' +
-				", wardenPhone='" + wardenPhone + '\'' +
-				", wardenName='" + wardenName + '\'' +
-				", wardenIdNo='" + wardenIdNo + '\'' +
-				", inviteCode='" + inviteCode + '\'' +
 				", province='" + province + '\'' +
 				", city='" + city + '\'' +
 				", district='" + district + '\'' +
-				", address='" + address + '\'' +
-				", longitude=" + longitude +
 				", latitude=" + latitude +
+				", longitude=" + longitude +
+				", wardenEmail='" + wardenEmail + '\'' +
+				", wardenPhone='" + wardenPhone + '\'' +
+				", password='" + password + '\'' +
+				", wardenName='" + wardenName + '\'' +
+				", wardenIdNo='" + wardenIdNo + '\'' +
+				", inviteCode='" + inviteCode + '\'' +
 				", memo='" + memo + '\'' +
 				", state=" + state +
-				", photos=" + photos +
 				", master='" + master + '\'' +
-				", admins=" + admins +
 				'}';
 	}
 }

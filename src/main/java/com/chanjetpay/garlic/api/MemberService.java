@@ -10,18 +10,25 @@ import feign.RequestLine;
 /**
  * Created by libaoa on 2017/10/25.
  */
-@Headers({"Content-Type: application/json","Accept: application/json"})
+@Headers("Accept: application/json")
 public interface MemberService {
 
 	//用户注册会员
-	@RequestLine("POST /member/register")
-	BasicResult register(MemberDto member);
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /member/{merchantId}/register")
+	BasicResult register(@Param("merchantId") String merchantId, MemberDto member);
 
-	//获取用户的电话号
-	@RequestLine("POST /member/wx/{blockCode}/user-phone-no")
-	GenericResult<String> getUserPhoneNo(@Param("blockCode") String blockCode, @Param("openId") String openId);
+	@RequestLine("GET /member/{blockCode}/query/{memberId}")
+	GenericResult<String> queryMember(@Param("blockCode") String blockCode, @Param("memberId") String memberId);
 
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /member/{blockCode}/complete")
+	BasicResult completeMember(@Param("blockCode") String blockCode, MemberDto member);
 
+	@RequestLine("GET /member/{blockCode}/wx/{userId}")
+	GenericResult<MemberDto> findByWxOfficialId(@Param("blockCode") String blockCode, @Param("userId") String userId);
 
+	@RequestLine("GET /member/{blockCode}/alipay/{userId}")
+	GenericResult<MemberDto> findByAlipayId(@Param("blockCode") String blockCode, @Param("userId") String userId);
 
 }

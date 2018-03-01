@@ -1,21 +1,24 @@
 package com.chanjetpay.garlic.dto;
 
-import com.chanjetpay.garlic.enums.OfficialStateEnum;
+import com.chanjetpay.garlic.enums.CooperateStateEnum;
+import com.chanjetpay.garlic.enums.CooperateTypeEnum;
+import com.chanjetpay.garlic.enums.UserSexEnum;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 微信用户
+ * 外部用户
  */
-public class WxUserDto implements Serializable {
+public class CooperateUserDto implements Serializable {
 
 	private static final long serialVersionUID = 1378201351652348977L;
 
 	private java.lang.String blockCode;
-	private java.lang.String openId;
+	private CooperateTypeEnum cooperateType;
+	private java.lang.String userId;
 	private java.lang.String nickName;
-	private Integer sex;
+	private UserSexEnum sex;
 	private java.lang.String city;
 	private java.lang.String country;
 	private java.lang.String province;
@@ -23,12 +26,9 @@ public class WxUserDto implements Serializable {
 	private Integer subscribeFlag;
 	private java.util.Date subscribeTime;
 	private java.util.Date signTime;
+	private java.util.Date lastSignTime;
 	private java.lang.String remark;
-	private OfficialStateEnum state;
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+	private CooperateStateEnum state;
 
 	public String getBlockCode() {
 		return blockCode;
@@ -38,12 +38,20 @@ public class WxUserDto implements Serializable {
 		this.blockCode = blockCode;
 	}
 
-	public String getOpenId() {
-		return openId;
+	public CooperateTypeEnum getCooperateType() {
+		return cooperateType;
 	}
 
-	public void setOpenId(String openId) {
-		this.openId = openId;
+	public void setCooperateType(CooperateTypeEnum cooperateType) {
+		this.cooperateType = cooperateType;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getNickName() {
@@ -54,11 +62,11 @@ public class WxUserDto implements Serializable {
 		this.nickName = nickName;
 	}
 
-	public Integer getSex() {
+	public UserSexEnum getSex() {
 		return sex;
 	}
 
-	public void setSex(Integer sex) {
+	public void setSex(UserSexEnum sex) {
 		this.sex = sex;
 	}
 
@@ -118,6 +126,14 @@ public class WxUserDto implements Serializable {
 		this.signTime = signTime;
 	}
 
+	public Date getLastSignTime() {
+		return lastSignTime;
+	}
+
+	public void setLastSignTime(Date lastSignTime) {
+		this.lastSignTime = lastSignTime;
+	}
+
 	public String getRemark() {
 		return remark;
 	}
@@ -126,30 +142,11 @@ public class WxUserDto implements Serializable {
 		this.remark = remark;
 	}
 
-	public OfficialStateEnum getState() {
+	public CooperateStateEnum getState() {
 		return state;
 	}
 
-	public void setState(OfficialStateEnum state) {
+	public void setState(CooperateStateEnum state) {
 		this.state = state;
-	}
-
-	@Override
-	public String toString() {
-		return "WxUserDto{" +
-				"blockCode='" + blockCode + '\'' +
-				", openId='" + openId + '\'' +
-				", nickName='" + nickName + '\'' +
-				", sex=" + sex +
-				", city='" + city + '\'' +
-				", country='" + country + '\'' +
-				", province='" + province + '\'' +
-				", headImgUrl='" + headImgUrl + '\'' +
-				", subscribeFlag=" + subscribeFlag +
-				", subscribeTime=" + subscribeTime +
-				", signTime=" + signTime +
-				", remark='" + remark + '\'' +
-				", state=" + state +
-				'}';
 	}
 }

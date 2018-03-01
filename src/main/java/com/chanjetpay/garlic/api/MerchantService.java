@@ -10,25 +10,32 @@ import feign.RequestLine;
 
 import java.awt.*;
 
-@Headers({"Content-Type: application/json","Accept: application/json"})
+@Headers("Accept: application/json")
 public interface MerchantService {
 
-	//@RequestLine("GET /repos/{owner}/{repo}/contributors")
-	//ListResult<MerchantDto> contributors(@Param("owner") String owner, @Param("repo") String repo);
-	//
-	//@RequestLine("GET /users/{username}/repos?sort={sort}")
-	//ListResult<DishDto> repos(@Param("username") String owner, @Param("sort") String sort);
-	//
-	//@RequestLine("POST /account/{id}")
-	//GenericResult<AccountDto> getAccountInfo(@Param("id") String id);
-
+	/**
+	 * 添加商户
+	 * @param blockCode
+	 * @param merchant
+	 * @return
+	 */
+	@Headers("Content-Type: application/json")
 	@RequestLine("POST /merchant/{blockCode}/create")
 	GenericResult<MerchantDto> create(@Param("blockCode") String blockCode, MerchantDto merchant);
 
-	@RequestLine("POST /merchant/wx/{merchantId}/add")
-	BasicResult addWxOfficial(@Param("merchantId") String merchantId, WxOfficialDto wxOfficial);
+	/**
+	 * 查询社区下全部商户
+	 * @param blockCode
+	 * @return
+	 */
+	@RequestLine("GET /merchant/{blockCode}/query")
+	ListResult<MerchantDto> queryALl(@Param("blockCode") String blockCode);
 
-	@RequestLine("POST /merchant/alipay/{merchantId}/add")
-	BasicResult addAlipayPlatform(@Param("merchantId") String merchantId, AlipayPlatformDto alipayPlatform);
-
+	/**
+	 * 根据商户号查询商户
+	 * @param merchantId
+	 * @return
+	 */
+	@RequestLine("GET /merchant/{merchantId}/find")
+	GenericResult<MerchantDto> findById(@Param("merchantId") String merchantId);
 }

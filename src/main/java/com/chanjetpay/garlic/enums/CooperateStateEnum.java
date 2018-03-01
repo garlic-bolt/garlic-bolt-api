@@ -1,9 +1,9 @@
 package com.chanjetpay.garlic.enums;
 
 /**
- * 公众号及用户状态
+ * 微信公众号、支付宝服务号、及用户状态
  */
-public enum OfficialStateEnum {
+public enum CooperateStateEnum {
 	/**
 	 * 启用
 	 */

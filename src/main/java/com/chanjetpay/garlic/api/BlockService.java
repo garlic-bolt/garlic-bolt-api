@@ -1,19 +1,16 @@
 package com.chanjetpay.garlic.api;
 
-import com.chanjetpay.garlic.dto.BlockDto;
-import com.chanjetpay.garlic.dto.UserDto;
+import com.chanjetpay.garlic.dto.*;
 
 import java.util.List;
 
+import com.chanjetpay.result.BasicResult;
 import com.chanjetpay.result.GenericResult;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
-/**
- * Created by libaoa on 2017/11/13.
- */
-@Headers({"Content-Type: application/json","Accept: application/json"})
+@Headers("Accept: application/json")
 public interface BlockService {
 
 	/**
@@ -21,16 +18,17 @@ public interface BlockService {
 	 * @param block
 	 * @return
 	 */
+	@Headers("Content-Type: application/json")
 	@RequestLine("POST /block/enroll")
 	GenericResult<BlockDto> enroll(BlockDto block);
 
 	/**
 	 * 查询社区
-	 * @param blockId
+	 * @param blockCode
 	 * @return
 	 */
-	@RequestLine("GET /block?id={id}")
-	GenericResult<BlockDto> findByBlockId(@Param("id") String blockId);
+	@RequestLine("GET /block/{blockCode}/find")
+	GenericResult<BlockDto> findByBlockCode(@Param("blockCode") String blockCode);
 
 	/**
 	 * 完善并激活社区信息
@@ -38,6 +36,26 @@ public interface BlockService {
 	 * @param block
 	 * @return
 	 */
-	@RequestLine("POST /block/complete/{invite}")
-	GenericResult<BlockDto> complete(@Param("invite") String inviteCode,BlockDto block);
+	@RequestLine("POST /block/{invite}/complete")
+	GenericResult<BlockDto> complete(@Param("invite") String inviteCode, BlockDto block);
+
+
+	/**
+	 * 添加微信公众号参数
+	 * @param blockCode
+	 * @param wxOfficial
+	 * @return
+	 */
+	@RequestLine("POST /block/{blockCode}/wx/add")
+	BasicResult addWxOfficial(@Param("blockCode") String blockCode, WxOfficialDto wxOfficial);
+
+	/**
+	 * 添加支付宝服务号参数
+	 * @param blockCode
+	 * @param alipayPlatform
+	 * @return
+	 */
+	@RequestLine("POST /block/{blockCode}/alipay/add")
+	BasicResult addAlipayPlatform(@Param("blockCode") String blockCode, AlipayPlatformDto alipayPlatform);
+
 }
