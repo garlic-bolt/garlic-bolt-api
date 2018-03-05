@@ -23,7 +23,7 @@ public interface BlockService {
 	GenericResult<BlockDto> enroll(BlockDto block);
 
 	/**
-	 * 查询社区
+	 * 查找社区
 	 * @param blockCode
 	 * @return
 	 */
