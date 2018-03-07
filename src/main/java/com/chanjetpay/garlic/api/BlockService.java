@@ -10,6 +10,9 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
+/**
+ * 社区服务
+ */
 @Headers("Accept: application/json")
 public interface BlockService {
 
@@ -36,6 +39,7 @@ public interface BlockService {
 	 * @param block
 	 * @return
 	 */
+	@Headers("Content-Type: application/json")
 	@RequestLine("POST /block/{invite}/complete")
 	GenericResult<BlockDto> complete(@Param("invite") String inviteCode, BlockDto block);
 
@@ -46,6 +50,7 @@ public interface BlockService {
 	 * @param wxOfficial
 	 * @return
 	 */
+	@Headers("Content-Type: application/json")
 	@RequestLine("POST /block/{blockCode}/wx/add")
 	BasicResult addWxOfficial(@Param("blockCode") String blockCode, WxOfficialDto wxOfficial);
 
@@ -55,6 +60,7 @@ public interface BlockService {
 	 * @param alipayPlatform
 	 * @return
 	 */
+	@Headers("Content-Type: application/json")
 	@RequestLine("POST /block/{blockCode}/alipay/add")
 	BasicResult addAlipayPlatform(@Param("blockCode") String blockCode, AlipayPlatformDto alipayPlatform);
 

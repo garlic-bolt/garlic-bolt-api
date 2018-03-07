@@ -27,6 +27,10 @@ public class BlockDto implements Serializable{
 	private java.lang.String memo;
 	private BlockStateEnum state;
 
+	private WxOfficialDto wxOfficial;
+
+	//系统管理员
+	private OperatorDto master;
 
 	public BlockDto(){
 
@@ -40,8 +44,23 @@ public class BlockDto implements Serializable{
 		this.setDistrict(district);
 	}
 
-	//系统管理员
-	private OperatorDto master;
+	public WxOfficialDto getWxOfficial() {
+		return wxOfficial;
+	}
+
+	public void setWxOfficial(WxOfficialDto wxOfficial) {
+		this.wxOfficial = wxOfficial;
+	}
+
+	public OperatorDto getMaster() {
+		return master;
+	}
+
+	public void setMaster(OperatorDto master) {
+		this.master = master;
+	}
+
+
 
 	public String getBlockCode() {
 		return blockCode;
@@ -162,6 +181,8 @@ public class BlockDto implements Serializable{
 	public void setState(BlockStateEnum state) {
 		this.state = state;
 	}
+
+
 
 	@Override
 	public String toString() {

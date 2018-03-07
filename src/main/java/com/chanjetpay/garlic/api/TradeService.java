@@ -38,7 +38,7 @@ public interface TradeService {
 	 */
 	@Headers("Content-Type: application/json")
 	@RequestLine("POST /loan/{merchantId}/loan")
-	BasicResult loan(@Param("merchantId") String merchantId, LoanOrderDto loanOrder);
+	BasicResult lend(@Param("merchantId") String merchantId, LoanOrderDto loanOrder);
 
 	/**
 	 * 抵消债务

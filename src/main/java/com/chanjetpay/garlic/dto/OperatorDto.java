@@ -1,5 +1,6 @@
 package com.chanjetpay.garlic.dto;
 
+import com.chanjetpay.garlic.enums.OperatorStateEnum;
 import com.chanjetpay.garlic.enums.OperatorTypeEnum;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
@@ -17,12 +18,11 @@ public class OperatorDto implements Serializable {
 	private java.lang.String email;
 	private java.lang.String salt;
 	private java.lang.String password;
-	private java.lang.String blockId;
-	private java.lang.String blockName;
+	private java.lang.String blockCode;
 	private java.lang.String merchantId;
-	private java.lang.String merchantName;
 	private OperatorTypeEnum type;
 	private java.lang.String role;
+	private OperatorStateEnum state;
 
 	//operator_role_ref
 	private List<String> roles;
@@ -32,7 +32,6 @@ public class OperatorDto implements Serializable {
 	//operator_authority_ref -> menu type
 	private List<AuthorityDto> menus;
 
-	private String nickName;
 	private String avatar;
 
 	private Integer attentionCount;
@@ -98,20 +97,12 @@ public class OperatorDto implements Serializable {
 		this.password = password;
 	}
 
-	public String getBlockId() {
-		return blockId;
+	public String getBlockCode() {
+		return blockCode;
 	}
 
-	public void setBlockId(String blockId) {
-		this.blockId = blockId;
-	}
-
-	public String getBlockName() {
-		return blockName;
-	}
-
-	public void setBlockName(String blockName) {
-		this.blockName = blockName;
+	public void setBlockCode(String blockCode) {
+		this.blockCode = blockCode;
 	}
 
 	public String getMerchantId() {
@@ -122,12 +113,12 @@ public class OperatorDto implements Serializable {
 		this.merchantId = merchantId;
 	}
 
-	public String getMerchantName() {
-		return merchantName;
+	public OperatorStateEnum getState() {
+		return state;
 	}
 
-	public void setMerchantName(String merchantName) {
-		this.merchantName = merchantName;
+	public void setState(OperatorStateEnum state) {
+		this.state = state;
 	}
 
 	public OperatorTypeEnum getType() {
@@ -144,14 +135,6 @@ public class OperatorDto implements Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
-	}
-
-	public String getNickName() {
-		return nickName;
-	}
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
 	}
 
 	public String getAvatar() {
@@ -219,16 +202,14 @@ public class OperatorDto implements Serializable {
 				", email='" + email + '\'' +
 				", salt='" + salt + '\'' +
 				", password='" + password + '\'' +
-				", blockId='" + blockId + '\'' +
-				", blockName='" + blockName + '\'' +
+				", blockCode='" + blockCode + '\'' +
 				", merchantId='" + merchantId + '\'' +
-				", merchantName='" + merchantName + '\'' +
 				", type=" + type +
 				", role='" + role + '\'' +
+				", state=" + state +
 				", roles=" + roles +
 				", permissions=" + permissions +
 				", menus=" + menus +
-				", nickName='" + nickName + '\'' +
 				", avatar='" + avatar + '\'' +
 				", attentionCount=" + attentionCount +
 				", messageCount=" + messageCount +
