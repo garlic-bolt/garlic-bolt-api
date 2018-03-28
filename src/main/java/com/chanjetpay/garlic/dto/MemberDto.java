@@ -1,6 +1,9 @@
 package com.chanjetpay.garlic.dto;
 
-import com.chanjetpay.garlic.enums.*;
+import com.chanjetpay.garlic.enums.AuthStateEnum;
+import com.chanjetpay.garlic.enums.MemberCategoryEnum;
+import com.chanjetpay.garlic.enums.MemberStateEnum;
+import com.chanjetpay.garlic.enums.UserSexEnum;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,8 +24,11 @@ public class MemberDto implements Serializable{
 	private java.lang.Integer retryTimes;
 	private AuthStateEnum authState;
 	private java.lang.String regChannel;
+	private java.lang.String wxOfficialId;
+	private java.lang.String alipayId;
+	private java.lang.String unipayId;
 	private MemberCategoryEnum memberCategory;
-	private java.lang.String blockId;
+	private java.lang.String blockCode;
 	private java.lang.String merchantId;
 	private java.lang.String operatorId;
 	private java.lang.String mobile;
@@ -36,10 +42,27 @@ public class MemberDto implements Serializable{
 	private java.lang.String address;
 	private java.lang.String career;
 	private MemberStateEnum state;
-	private Date registerTime;
+	private Date createDate;
 
-	private CooperateTypeEnum cooperatorType;
-	private CooperateUserDto user;
+	public MemberDto(){
+
+	}
+
+	public MemberDto(String name, String idCardNo, String mobile, String email, String password, UserSexEnum sex){
+		this.name = name;
+		this.nickName = name;
+		this.idCardNo = idCardNo;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
+		this.sex = sex;
+	}
+
+	public void fillMember(String blockCode, String merchantId, MemberCategoryEnum memberCategory) {
+		this.blockCode = blockCode;
+		this.merchantId = merchantId;
+		this.memberCategory = memberCategory;
+	}
 
 	public String getMemberId() {
 		return memberId;
@@ -121,12 +144,36 @@ public class MemberDto implements Serializable{
 		this.memberCategory = memberCategory;
 	}
 
-	public String getBlockId() {
-		return blockId;
+	public String getWxOfficialId() {
+		return wxOfficialId;
 	}
 
-	public void setBlockId(String blockId) {
-		this.blockId = blockId;
+	public void setWxOfficialId(String wxOfficialId) {
+		this.wxOfficialId = wxOfficialId;
+	}
+
+	public String getAlipayId() {
+		return alipayId;
+	}
+
+	public void setAlipayId(String alipayId) {
+		this.alipayId = alipayId;
+	}
+
+	public String getUnipayId() {
+		return unipayId;
+	}
+
+	public void setUnipayId(String unipayId) {
+		this.unipayId = unipayId;
+	}
+
+	public String getBlockCode() {
+		return blockCode;
+	}
+
+	public void setBlockCode(String blockCode) {
+		this.blockCode = blockCode;
 	}
 
 	public String getMerchantId() {
@@ -233,12 +280,45 @@ public class MemberDto implements Serializable{
 		this.state = state;
 	}
 
-	public Date getRegisterTime() {
-		return registerTime;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setRegisterTime(Date registerTime) {
-		this.registerTime = registerTime;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
+	@Override
+	public String toString() {
+		return "MemberDto{" +
+				"memberId='" + memberId + '\'' +
+				", nickName='" + nickName + '\'' +
+				", avatarUrl='" + avatarUrl + '\'' +
+				", birthday='" + birthday + '\'' +
+				", password='" + password + '\'' +
+				", salt='" + salt + '\'' +
+				", retryTimes=" + retryTimes +
+				", authState=" + authState +
+				", regChannel='" + regChannel + '\'' +
+				", wxOfficialId='" + wxOfficialId + '\'' +
+				", alipayId='" + alipayId + '\'' +
+				", unipayId='" + unipayId + '\'' +
+				", memberCategory=" + memberCategory +
+				", blockCode='" + blockCode + '\'' +
+				", merchantId='" + merchantId + '\'' +
+				", operatorId='" + operatorId + '\'' +
+				", mobile='" + mobile + '\'' +
+				", email='" + email + '\'' +
+				", name='" + name + '\'' +
+				", idCardNo='" + idCardNo + '\'' +
+				", accountNo='" + accountNo + '\'' +
+				", points=" + points +
+				", level=" + level +
+				", sex=" + sex +
+				", address='" + address + '\'' +
+				", career='" + career + '\'' +
+				", state=" + state +
+				", createDate=" + createDate +
+				'}';
+	}
 }

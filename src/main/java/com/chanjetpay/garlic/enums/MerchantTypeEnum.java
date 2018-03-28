@@ -4,13 +4,22 @@ public enum MerchantTypeEnum {
 	/**
 	 * 小微
 	 */
-	MICRO,
+	MICRO("小微"),
 	/**
 	 * 个体户
 	 */
-	INDIVIDUAL,
+	INDIVIDUAL("个体户"),
 	/**
 	 * 企业
 	 */
-	ENTERPRISE;
+	ENTERPRISE("企业");
+
+	private String desc;
+	MerchantTypeEnum(String desc){
+		this.desc = desc;
+	}
+
+	private String getDesc(){
+		return desc;
+	}
 }

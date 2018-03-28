@@ -2,6 +2,7 @@ package com.chanjetpay.garlic.api;
 
 import com.chanjetpay.garlic.dto.*;
 import com.chanjetpay.result.BasicResult;
+import com.chanjetpay.result.GenericResult;
 import com.chanjetpay.result.ListResult;
 import feign.Headers;
 import feign.Param;
@@ -17,7 +18,7 @@ public interface TradeService {
 	 * @return
 	 */
 	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/deposit")
+	@RequestLine("POST /trade/{merchantId}/deposit")
 	BasicResult deposit(@Param("merchantId") String merchantId, DepositDto deposit);
 
 	/**
@@ -27,18 +28,38 @@ public interface TradeService {
 	 * @return
 	 */
 	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/consume")
+	@RequestLine("POST /trade/{merchantId}/consume")
 	BasicResult consume(@Param("merchantId") String merchantId, ConsumeDto consume);
 
 	/**
-	 * 出借
+	 * 预付
 	 * @param merchantId
-	 * @param loanOrder
+	 * @param claim
 	 * @return
 	 */
 	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/loan")
-	BasicResult lend(@Param("merchantId") String merchantId, LoanOrderDto loanOrder);
+	@RequestLine("POST /trade/{merchantId}/loan")
+	BasicResult advanceLoan(@Param("merchantId") String merchantId, ClaimDto claim);
+
+	/**
+	 * 预付确认
+	 * @param blockCode
+	 * @param agreementNo
+	 * @return
+	 */
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /trade/{blockCode}/confirm/{agreementNo}")
+	BasicResult confirmLoan(@Param("blockCode") String blockCode, @Param("agreementNo") String agreementNo);
+
+	/**
+	 * 赊销
+	 * @param merchantId
+	 * @param claim
+	 * @return
+	 */
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /trade/{merchantId}/sale")
+	BasicResult saleLoan(@Param("merchantId") String merchantId, ClaimDto claim);
 
 	/**
 	 * 抵消债务
@@ -47,7 +68,7 @@ public interface TradeService {
 	 * @return
 	 */
 	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/cross")
+	@RequestLine("POST /trade/{merchantId}/cross")
 	BasicResult crossLoan(@Param("merchantId") String merchantId, CrossLoanDto crossLoan);
 
 	/**
@@ -57,48 +78,25 @@ public interface TradeService {
 	 * @return
 	 */
 	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/cancel")
+	@RequestLine("POST /trade/{merchantId}/cancel")
 	BasicResult cancelLoan(@Param("merchantId") String merchantId, CancelLoanDto cancelLoan);
 
+	/**
+	 * 查找债权债务
+	 * @param blockCode
+	 * @param agreementNo
+	 * @return
+	 */
+	@RequestLine("GET /trade/{blockCode}/find")
+	GenericResult<ClaimDto> findClaimByNo(@Param("blockCode") String blockCode, @Param("agreementNo") String agreementNo);
 
 	/**
-	 * 查询出借记录
+	 * 查询债权债务记录
 	 * @param merchantId
 	 * @param region
 	 * @return
 	 */
-	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/query-lend")
-	ListResult<LoanOrderDto> queryLendOrders(@Param("merchantId") String merchantId, QueryRegionDto region);
+	@RequestLine("GET /trade/{merchantId}/query")
+	ListResult<ClaimDto> queryClaims(@Param("merchantId") String merchantId, QueryRegionDto region);
 
-	/**
-	 * 查询借款记录
-	 * @param merchantId
-	 * @param region
-	 * @return
-	 */
-	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/query-borrow")
-	ListResult<LoanOrderDto> queryBorrowOrders(@Param("merchantId") String merchantId, QueryRegionDto region);
-
-
-	/**
-	 * 查询充值记录
-	 * @param memberId
-	 * @param region
-	 * @return
-	 */
-	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/query-deposit")
-	ListResult<DepositDto> queryDepositOrders(@Param("memberId") String memberId, QueryRegionDto region);
-
-	/**
-	 * 查询消费记录
-	 * @param memberId
-	 * @param region
-	 * @return
-	 */
-	@Headers("Content-Type: application/json")
-	@RequestLine("POST /loan/{merchantId}/query-consume")
-	ListResult<ConsumeDto> queryConsumeOrders(@Param("memberId") String memberId, QueryRegionDto region);
 }

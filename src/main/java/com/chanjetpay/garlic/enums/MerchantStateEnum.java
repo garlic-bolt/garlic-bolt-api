@@ -4,17 +4,26 @@ public enum MerchantStateEnum {
 	/**
 	 * 注册
 	 */
-	ENROLL,
+	ENROLL("注册"),
 	/**
 	 * 正常
 	 */
-	NORMAL,
+	NORMAL("正常"),
 	/**
 	 * 挂起
 	 */
-	SUSPEND,
+	SUSPEND("挂起"),
 	/**
 	 * 关闭
 	 */
-	CLOSE;
+	CLOSE("关闭");
+
+	private String desc;
+	MerchantStateEnum(String desc){
+		this.desc = desc;
+	}
+
+	public String getDesc(){
+		return desc;
+	}
 }

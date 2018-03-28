@@ -36,8 +36,14 @@ public class BlockDto implements Serializable{
 
 	}
 
-	public void fillBlockData(String name, String password, String province, String city, String district){
-		this.setWardenName(name);
+	public BlockDto(String blockName, String wardenEmail, String wardenPhone){
+		this.blockName = blockName;
+		this.wardenEmail = wardenEmail;
+		this.wardenPhone = wardenPhone;
+	}
+
+	public void fillBlockData(String wardenName, String password, String province, String city, String district){
+		this.setWardenName(wardenName);
 		this.setPassword(password);
 		this.setProvince(province);
 		this.setCity(city);

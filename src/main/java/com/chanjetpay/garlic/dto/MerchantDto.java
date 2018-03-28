@@ -20,7 +20,7 @@ public class MerchantDto implements Serializable{
 	private java.lang.String shortName;
 	private MerchantTypeEnum merchantType;
 	private java.lang.String contact;
-	private java.lang.String telphone;
+	private java.lang.String email;
 	private java.lang.String mobile;
 	private java.lang.String address;
 	private java.lang.String industry;
@@ -109,12 +109,12 @@ public class MerchantDto implements Serializable{
 		this.contact = contact;
 	}
 
-	public String getTelphone() {
-		return telphone;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setTelphone(String telphone) {
-		this.telphone = telphone;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getMobile() {

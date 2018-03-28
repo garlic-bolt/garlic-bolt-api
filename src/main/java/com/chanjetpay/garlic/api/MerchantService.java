@@ -10,6 +10,9 @@ import feign.RequestLine;
 
 import java.awt.*;
 
+/**
+ * 商户服务
+ */
 @Headers("Accept: application/json")
 public interface MerchantService {
 

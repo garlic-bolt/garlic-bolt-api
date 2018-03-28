@@ -38,7 +38,7 @@ public class OperatorDto implements Serializable {
 	private Integer messageCount;
 	private Integer taskCount;
 
-	public void fillOperatorInfo(String name, String mobile, String email, String password){
+	public void fillOperator(String name, String mobile, String email, String password){
 		this.name = name;
 		this.mobile = mobile;
 		this.email = email;

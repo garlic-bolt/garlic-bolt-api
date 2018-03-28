@@ -1,5 +1,6 @@
 package com.chanjetpay.garlic.enums;
 
+//债权债务类型
 public enum DueTypeEnum {
 	/**
 	 * 消费

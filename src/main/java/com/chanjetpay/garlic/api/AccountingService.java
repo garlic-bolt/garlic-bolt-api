@@ -1,7 +1,7 @@
 package com.chanjetpay.garlic.api;
 
 import com.chanjetpay.garlic.dto.QueryRegionDto;
-import com.chanjetpay.garlic.dto.SourceRequestDto;
+import com.chanjetpay.garlic.dto.RecordingRequestDto;
 import com.chanjetpay.garlic.dto.VoucherDto;
 import com.chanjetpay.result.GenericResult;
 import feign.Headers;
@@ -30,7 +30,7 @@ public interface AccountingService {
 	 */
 	@Headers("Content-Type: application/json")
 	@RequestLine("POST /accounting/batch")
-	GenericResult<String> batchAccounting(SourceRequestDto sourceRequest);
+	GenericResult<String> batchAccounting(RecordingRequestDto sourceRequest);
 
 	/**
 	 * 账务冲正-蓝冲（借贷互换）
@@ -73,5 +73,5 @@ public interface AccountingService {
 	 * @return
 	 */
 	@RequestLine("GET /accounting/{requestNo}/batch")
-	GenericResult<SourceRequestDto> queryBatch(@Param("requestNo") String requestNo);
+	GenericResult<RecordingRequestDto> queryBatch(@Param("requestNo") String requestNo);
 }
