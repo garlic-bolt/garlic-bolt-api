@@ -6,17 +6,27 @@ public enum BlockStateEnum {
 	/**
 	 * 注册中
 	 */
-	ENROLL,
+	ENROLL("注册中"),
 	/**
 	 * 已激活
 	 */
-	ACTIVE,
+	ACTIVE("已激活"),
 	/**
 	 * 已挂起
 	 */
-	SUSPEND,
+	SUSPEND("已挂起"),
 	/**
 	 * 已注销
 	 */
-	DESTROY;
+	DESTROY("已注销");
+
+	private String desc;
+
+	public String getDesc() {
+		return desc;
+	}
+
+	BlockStateEnum(String desc){
+		this.desc = desc;
+	}
 }

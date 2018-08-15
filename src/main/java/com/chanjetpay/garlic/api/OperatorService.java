@@ -12,12 +12,14 @@ import feign.RequestLine;
 public interface OperatorService {
 
 	/**
-	 * 查询商户下全部操作员
+	 * 查询商户下操作员
 	 * @param merchantId
+	 * @param operator
 	 * @return
 	 */
-	@RequestLine("GET /operator/{merchantId}/query")
-	ListResult<OperatorDto> queryAll(@Param("merchantId") String merchantId);
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /operator/{merchantId}/query")
+	ListResult<OperatorDto> query(@Param("merchantId") String merchantId, OperatorDto operator);
 
 	/**
 	 * 根据id查找操作员
@@ -36,6 +38,16 @@ public interface OperatorService {
 	@Headers("Content-Type: application/json")
 	@RequestLine("POST /operator/{merchantId}/create")
 	GenericResult<OperatorDto> create(@Param("merchantId") String merchantId, OperatorDto operator);
+
+	/**
+	 * 重置操作员密码
+	 * @param merchantId
+	 * @param operator
+	 * @return
+	 */
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /operator/{merchantId}/reset")
+	BasicResult reset(@Param("merchantId") String merchantId, OperatorDto operator);
 
 	/**
 	 * 关闭操作员

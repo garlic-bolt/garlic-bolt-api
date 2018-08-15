@@ -1,6 +1,5 @@
 package com.chanjetpay.result;
 
-import com.chanjetpay.result.Result;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -27,14 +26,14 @@ public class ListResult<T> extends Result {
 	/**
 	 * 集合值结果
 	 */
-	private List<T> values;
+	private List<T> data;
 
-	public List<T> getValues() {
-		return values;
+	public List<T> getData() {
+		return data;
 	}
 
-	public ListResult<T> setValues(List<T> values) {
-		this.values = values;
+	public ListResult<T> setData(List<T> values) {
+		this.data = values;
 		return this;
 	}
 

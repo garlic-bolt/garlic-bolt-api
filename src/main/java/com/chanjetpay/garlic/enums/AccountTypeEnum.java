@@ -4,7 +4,10 @@ public enum AccountTypeEnum {
 
 	BALANCE("100", "余额账户"),
 	SETTLE("101", "待结算账户"),
-	FEE("102", "手续费账户");
+	FEE("102", "手续费账户"),
+
+	HOLD("200","中间户"),
+	TEMP("201","过渡户");
 
 	private String code, desc;
 

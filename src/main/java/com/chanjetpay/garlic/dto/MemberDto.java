@@ -48,6 +48,11 @@ public class MemberDto implements Serializable{
 
 	}
 
+	public MemberDto(String memberId, String password) {
+		this.memberId = memberId;
+		this.password = password;
+	}
+
 	public MemberDto(String name, String idCardNo, String mobile, String email, String password, UserSexEnum sex){
 		this.name = name;
 		this.nickName = name;

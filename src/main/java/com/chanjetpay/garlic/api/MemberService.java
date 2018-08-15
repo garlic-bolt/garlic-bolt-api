@@ -54,6 +54,16 @@ public interface MemberService {
 	GenericResult<MemberDto> submitMember(@Param("blockCode") String merchantId, @Param("operatorId") String operatorId, MemberDto member);
 
 	/**
+	 * 验证会员密码
+	 * @param blockCode
+	 * @param member
+	 * @return
+	 */
+	@Headers("Content-Type: application/json")
+	@RequestLine("POST /member/{blockCode}/verify")
+	GenericResult<Boolean> verifyPassword(@Param("blockCode") String blockCode , MemberDto member);
+
+	/**
 	 * 更具微信id查找会员
 	 * @param blockCode
 	 * @param userId

@@ -24,14 +24,14 @@ public class GenericResult<T> extends Result {
 	/**
 	 * @return 单个返回值
 	 */
-	private T value;
+	private T data;
 
-	public T getValue() {
-		return value;
+	public T getData() {
+		return data;
 	}
 
-	public GenericResult<T> setValue(T value) {
-		this.value = value;
+	public GenericResult<T> setData(T value) {
+		this.data = value;
 		return this;
 	}
 
