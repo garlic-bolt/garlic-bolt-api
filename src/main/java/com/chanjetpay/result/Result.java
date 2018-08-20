@@ -61,8 +61,6 @@ public abstract class Result implements Serializable {
 		this.desc = desc;
 		return this;
 	}
-	
-	public abstract boolean isError();
 
 	@Override
 	public String toString() {

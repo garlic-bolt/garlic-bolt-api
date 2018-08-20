@@ -36,11 +36,6 @@ public class GenericResult<T> extends Result {
 	}
 
 	@Override
-	public boolean isError() {
-		return !Result.SUCCESS.equals(this.getCode());
-	}
-
-	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.DEFAULT_STYLE, true, true);
 	}
